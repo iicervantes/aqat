@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>IP Address Management</h2>
+  <p>Start by adding an CIDR block. Acquire/Release IPs based on selection.</p>
+  <div style="justify-self: center">
+    <app-input labelText="CIDR Block" placeholderText="Ex: 192.168.1.1/24" (newValueEvent)="newIp($event)" ></app-input>
+    <app-button color="light-blue" text="Add CIDR Block" (btnClick)="addIp()"></app-button>
+  </div>
+  <br/><br/>
+  <div id="ipList">
+    <mat-label>Available IPs:
+      <app-multiselect #availMultiselectChild [itemList]="availableIPs" (handleSubmit)="acquireIp($event)" placeholder="Select IPs to Acquire"></app-multiselect>
+    </mat-label>
+    <app-button text="Acquire" (btnClick)="availMultiselectChild.getSelectedItems()"></app-button>
+    <br/>
+    <mat-label>Acquired IPs:
+      <app-multiselect #acquiredMultiselectChild [itemList]="acquiredIPs"  (handleSubmit)="releaseIp($event)" placeholder="Select IPs to Release"></app-multiselect>
+    </mat-label>
+    <app-button text="Release" (btnClick)="acquiredMultiselectChild.getSelectedItems()"></app-button>
+  </div>
+  <br/><br/>
+  <div mat-dialog-actions align="end">
+    <app-button color="green" text="Refresh Address List" (btnClick)="getAllAddresses()"></app-button>
+  </div>
+</div>

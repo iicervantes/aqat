@@ -1,0 +1,21 @@
+<div class="container" style="max-width: 100%">
+  <h2>Air Quality Management System</h2>
+  <p>Select 2 cites and compare the air quality between them</p>
+  <div layout="row">
+    <app-multiselect #cityLeftChild [itemList]="citiesLeft" placeholder="Select City" [multiselectable]=false (handleSubmit)="getCityLeftInfo($event)"></app-multiselect>
+    <app-multiselect style="float:right" #cityRightChild  [itemList]="citiesRight" placeholder="Select City" [multiselectable]=false (handleSubmit)="getCityRightInfo($event)"></app-multiselect>
+  </div>
+  <div class="center">
+    <app-button  text="Compare" (btnClick)="compare()"></app-button>
+  </div>
+
+  <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile style="overflow-y: auto;display: grid">
+      <app-table style="height: 350px;" [dataSource]="cityLeftData"></app-table>
+      </mat-grid-tile>
+    <mat-grid-tile style="overflow-y: auto;display: grid">
+      <app-table style="height: 350px;" [dataSource]="cityRightData"></app-table>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+</div>

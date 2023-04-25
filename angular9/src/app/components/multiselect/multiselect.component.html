@@ -1,0 +1,10 @@
+<mat-form-field appearance="fill">
+  <mat-label>Select</mat-label>
+  <mat-select [formControl]="selected" [errorStateMatcher]="matcher" multiple="{{multiselectable}}">
+    <mat-option *ngFor="let item of itemList" [value]="item.value">
+      {{item.viewValue}}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="itemList.length != 0 && selected.hasError('required')">You must make a selection</mat-error>
+</mat-form-field>
+
