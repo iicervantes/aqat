@@ -1,15 +1,23 @@
 plugins {
-    id 'java'
+    id 'application'
     id 'org.springframework.boot' version '2.3.12.RELEASE'
     id 'io.spring.dependency-management' version '1.1.0'
 }
+apply plugin: "java"
 
 group = 'com.aqat'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+ext {
+    javaMain = "com.aqat.cidr.CidrManagementApplication"
+}
 repositories {
     mavenCentral()
+}
+
+application {
+    mainClassName = javaMain
 }
 
 dependencies {
